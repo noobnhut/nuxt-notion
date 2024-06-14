@@ -64,8 +64,8 @@ const state = reactive({
   overviews: [],
   heading:''
 });
-
-const res = await fetch(`http://localhost:3000/api/${type}`);
+const config = useRuntimeConfig()
+const res = await fetch(`${config.public.apiUrl}api/${type}`);
 
 res.json().then((data) => {
   if(type == 'be')

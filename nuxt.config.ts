@@ -1,7 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  nitro: {
+    preset: 'node-server'
+  },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.BE_LOCAL
+    },
+  }
+  , devtools: { enabled: true },
   plugins: [
     { src: '~/lib/prism.ts', mode: 'client' }
   ],

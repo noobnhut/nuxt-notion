@@ -60,8 +60,8 @@ const state = reactive({
 });
 
 const route = useRoute();
-
-const res = await fetch(`http://localhost:3000/api/page/${route.params.id}`);
+const config = useRuntimeConfig()
+const res = await fetch(`${config.public.apiUrl}api/page/${route.params.id}`);
 const data = await res.json();
 state.page = data.page;
 
