@@ -4,7 +4,7 @@
       <h2
         class="text-2xl md:text-3xl pl-2 my-2 border-l-4 font-sans font-bold border-gray-400"
       >
-        Cơ sở dữ liệu
+        Ngôn ngữ lập trình
       </h2>
       <section
         class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8"
@@ -49,16 +49,15 @@
     </article>
   </section>
 </template>
-
 <script setup>
 const state = reactive({
   covers: [],
   overviews: [],
 });
 
-const res = await fetch("http://localhost:3000/api/csdl");
+const res = await fetch("http://localhost:3000/api/lang");
 
 res.json().then((data) => {
-  state.overviews = data.csdls;
+  state.overviews = data.langs;
 });
 </script>

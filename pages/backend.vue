@@ -1,6 +1,6 @@
 <template>
   <div>
-    3
+    <be/>
   </div>
 </template>
 

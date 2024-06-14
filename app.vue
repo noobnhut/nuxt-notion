@@ -1,7 +1,11 @@
 <template>
-  <div>
+  <div
+    style="background-image: url('https://mixivivu.com/section-background.png')"
+  >
     <NuxtLayout>
-      <NuxtPage />
+      <div class="mt-8 md:mt-10">
+        <NuxtPage />
+      </div>
     </NuxtLayout>
   </div>
 </template>

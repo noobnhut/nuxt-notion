@@ -4,7 +4,7 @@
       <h2
         class="text-2xl md:text-3xl pl-2 my-2 border-l-4 font-sans font-bold border-gray-400"
       >
-        Cơ sở dữ liệu
+        FE - Frontend
       </h2>
       <section
         class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8"
@@ -29,8 +29,7 @@
                   <span class="absolute inset-0"></span>
                   {{ text.plain_text }}
                 </NuxtLink>
-                <div >
-                  <div class="inline-block relative py-1 text-xs">
+                <div > <div class="inline-block relative py-1 text-xs">
                     <div class="absolute inset-0 text-red-200 flex">
                       <div class="flex-grow h-full bg-red-200 rounded-md"></div>
                     </div>
@@ -56,9 +55,9 @@ const state = reactive({
   overviews: [],
 });
 
-const res = await fetch("http://localhost:3000/api/csdl");
+const res = await fetch("http://localhost:3000/api/fe");
 
 res.json().then((data) => {
-  state.overviews = data.csdls;
+  state.overviews = data.fes;
 });
 </script>
