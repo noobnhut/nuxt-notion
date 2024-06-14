@@ -1,5 +1,5 @@
 <template>
-  <overview/>
+  <post type="overview" />
   
 </template>
 

@@ -20,11 +20,11 @@
     </header>
     <!--views-->
     <div>
-      <overview />
-      <csdl />
-      <lang />
-      <fe />
-      <be />
+      <post type="overview" />
+      <post type="csdl" />
+      <post type="lang" />
+      <post type="fe" />
+      <post type="be" />
     </div>
   </div>
 </template>

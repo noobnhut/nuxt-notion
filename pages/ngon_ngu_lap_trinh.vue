@@ -1,5 +1,5 @@
 <template>
-<lang/>
+<post type="lang" />
 </template>
 
 <script setup>

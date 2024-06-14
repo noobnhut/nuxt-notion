@@ -4,7 +4,7 @@
       <h2
         class="text-2xl md:text-3xl pl-2 my-2 border-l-4 font-sans font-bold border-gray-400"
       >
-        BE - Backend
+        {{ state.heading }}
       </h2>
       <section
         class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8"
@@ -51,14 +51,47 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  type: {
+    type: String,
+    required: true,
+  },
+});
+const { type } = props;
+
 const state = reactive({
   covers: [],
   overviews: [],
+  heading:''
 });
 
-const res = await fetch("http://localhost:3000/api/be");
+const res = await fetch(`http://localhost:3000/api/${type}`);
 
 res.json().then((data) => {
-  state.overviews = data.bes;
+  if(type == 'be')
+  {
+    state.overviews = data.bes;
+    state.heading = 'BE - Backend'
+  }
+  else if(type == 'fe')
+  {
+    state.overviews = data.fes;
+    state.heading = 'FE - Frontend'
+  }
+  else if(type == 'csdl')
+  {
+    state.overviews = data.csdls;
+    state.heading = 'Cơ sở dữ liệu'
+  }
+  else if(type == 'lang')
+  {
+    state.overviews = data.langs;
+    state.heading = 'Ngôn ngữ lập trình'
+  }
+  else if(type == 'overview')
+  {
+    state.overviews = data.overviews;
+    state.heading = 'Tổng quát'
+  }
 });
 </script>

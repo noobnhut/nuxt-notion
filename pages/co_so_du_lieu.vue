@@ -1,6 +1,6 @@
 <template>
   <div>
-    <csdl/>
+    <post type="csdl" />
   </div>
 </template>
 

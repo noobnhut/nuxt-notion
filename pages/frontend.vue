@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fe/>
+    <post type="fe" />
   </div>
 </template>
 

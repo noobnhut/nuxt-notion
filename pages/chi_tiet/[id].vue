@@ -1,5 +1,5 @@
 <template>
-  <div v-for="data in state.page" :key="data.id">
+  <div v-for="data in state.page" :key="data.id"  class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-2">
     <div v-if="data.type == 'image'" class="flex justify-center items-center">
       <template v-if="data.image.type == 'external'">
         <img :src="data.image.external.url" alt="" class="max-w-full h-auto" />
@@ -11,7 +11,7 @@
     </div>
 
     <div v-if="data.type == 'heading_1'" class="mt-2">
-      <p class="font-bold text-xl md:text-3xl">{{ data.content }}</p>
+      <p class="text-2xl md:text-3xl pl-2 my-2 border-l-4 font-sans font-bold border-gray-400">{{ data.content }}</p>
     </div>
 
     <div v-if="data.type == 'heading_3'" class="mt-2">
@@ -37,21 +37,23 @@
       </ul>
     </div>
 
-    <code
+    <div
       v-if="data.type == 'code'"
-      class="text-sm sm:text-base inline-flex text-left items-center space-x-4 bg-gray-800 text-white rounded-lg p-4 pl-6 justify-center"
     >
-      <span class="flex gap-4">
-        <span class="flex-1">
-          <pre>{{ data.content }}</pre>
-        </span>
-      </span>
-    </code>
+    <pre><code class="lang-js"><span>{{ data.content }}</span></code></pre>
+  </div>
   </div>
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+import Prism from "prismjs";
+import "prismjs/themes/prism.min.css";
 import { useRoute } from "vue-router";
+
+onMounted(() => {
+  Prism.highlightAll();
+});
 
 const state = reactive({
   page: [],
@@ -62,4 +64,6 @@ const route = useRoute();
 const res = await fetch(`http://localhost:3000/api/page/${route.params.id}`);
 const data = await res.json();
 state.page = data.page;
+
+
 </script>

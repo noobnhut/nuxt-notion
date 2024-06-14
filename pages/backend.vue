@@ -1,6 +1,6 @@
 <template>
   <div>
-    <be/>
+    <post type='be' />
   </div>
 </template>
 
