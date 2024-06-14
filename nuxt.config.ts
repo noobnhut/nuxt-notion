@@ -2,7 +2,11 @@
 
 export default defineNuxtConfig({
   nitro: {
-    preset: 'node-server'
+    storage: {
+      data: {
+        driver: 'vercelKV'
+      }
+    }
   },
   runtimeConfig: {
     public: {

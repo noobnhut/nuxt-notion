@@ -12,6 +12,7 @@
   "dependencies": {
     "@notionhq/client": "^2.2.15",
     "@nuxtjs/dotenv": "^1.4.2",
+    "@vercel/kv": "^1.0.1",
     "dotenv": "^16.4.5",
     "nuxt": "^3.12.1",
     "prismjs": "^1.29.0",
