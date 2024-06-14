@@ -1,13 +1,13 @@
 import { Client } from "@notionhq/client";
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
+const notion = new Client({ auth: 'secret_HbpzoTeWVNyuLKktN9RSblm87JqTvAYEcxJUYhw9ILw' });
 const DatabaseId = process.env.NOTION_BE as string; // Ensure type safety
 
 let payload: any[] = []; // Define the type of payload if possible
 
 async function getData() {
   const data = await notion.databases.query({
-    database_id: DatabaseId,
+    database_id: '9a20da266506405b9b1519c83403077b',
   });
   return data;
 }
