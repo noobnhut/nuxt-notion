@@ -29,6 +29,6 @@ function getProperties(results: any[]): string[] {
 export default defineEventHandler(() => {
   return {
    bes: getProperties(payload),
-   test:DatabaseId
+   test:notion
   };
 });

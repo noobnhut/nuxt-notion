@@ -48,6 +48,6 @@ export default defineEventHandler(async (event) => {
     const data = await getData(id);
     payload = data;
     return {
-        page: 'getProperties(payload)',
+        page: getProperties(payload),
     };
 });
