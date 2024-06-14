@@ -1,34 +1,36 @@
 import { Client } from "@notionhq/client";
+import { defineEventHandler } from 'h3';
 
-const notion = new Client({ auth: 'secret_HbpzoTeWVNyuLKktN9RSblm87JqTvAYEcxJUYhw9ILw' });
+const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const DatabaseId = process.env.NOTION_BE as string; // Ensure type safety
 
-let payload: any[] = []; // Define the type of payload if possible
-
+// Function to fetch data from Notion
 async function getData() {
-  const data = await notion.databases.query({
-    database_id: '9a20da266506405b9b1519c83403077b',
-  });
-  return data;
+  try {
+    const response = await notion.databases.query({ database_id: DatabaseId });
+    return response.results;
+  } catch (error) {
+    console.error("Error fetching data from Notion:", error);
+    return [];
+  }
 }
 
-getData().then((data) => {
-  payload = data.results;
-});
-
-
-// Tag Link Name
+// Function to extract properties (e.g., URLs) from Notion results
 function getProperties(results: any[]): string[] {
   let urls: string[] = [];
   results.forEach(element => {
-      urls.push(element);
+    if (element.properties && element.properties.URL && element.properties.URL.url) {
+      urls.push(element.properties.URL.url);
+    }
   });
   return urls;
 }
 
-export default defineEventHandler(() => {
+// API handler
+export default defineEventHandler(async () => {
+  const data = await getData();
   return {
-   bes: getProperties(payload),
-   test:notion
+    bes: getProperties(data),
+    test: notion
   };
 });
